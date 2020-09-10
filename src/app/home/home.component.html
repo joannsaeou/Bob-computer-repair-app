@@ -1,0 +1,31 @@
+<!-- * Title: home.component.html
+* Author: Professor Krasso
+* Date: 9 September 2020
+* Modified: Joann Saeou
+* Description: Home component -->
+
+<div fxLayout="column" fxLayoutGap="10px" style="color: brown;">
+    <h1 fxFlex style="text-align: center;">Repair-Services</h1>
+
+    <div fxFlex>
+        <mat-card style="width: 70%; margin: 0 auto; color:brown;">
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit(); productForm.reset();">
+                <mat-card-content>
+                    <div fxLayout="column" fxLayoutGap="10px">
+
+                        <div fxFlex formArrayName="fruitOptions" *ngFor="let fruit of productForm.controls.fruitOptions['controls']; let i = index">
+                            <mat-checkbox formControlName="{{i}}">
+                                {{ products[i].id }}: {{ products[i].title }}: {{ products[i].description }}: {{ products[i].price }}
+                              </mat-checkbox>
+                        </div>
+
+                    </div>
+                </mat-card-content>
+
+                <mat-card-actions align="end">
+                    <button mat-raised-button color="primary" align="center">Submit</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+</div>
